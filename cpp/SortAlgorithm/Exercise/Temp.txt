@@ -1,0 +1,41 @@
+nguyên dương: P
+tăng dần: I
+giá trị 0: Z
+thay doi vi tri: C
+thay doi tinh chat: D
+
+
+(P -> I)
+(!P -> !I)
+--> (P -> I) && (!P -> !I) "Compare absolute value"
+--> Z -> !C "If Z, skip"
+
+(1) !((a[i] < b[j]) AND (v[l] != 0) AND (a[i] != 0))
+<=> !(a[i] < b[j]) AND !(v[l] != 0) AND !(a[i] != 0)
+<=> a[i] >= b[j] ...
+
+int merge (vector v, int l, int m, int r) {
+   vector a(v.begin + l, v.begin + m + 1)
+   vector b(v.begin + m + 1, v.begin + r + 1)
+   int i = j = 0;
+   while (i < a.size && j < b.size) {
+	if (a[i] < b[j] && v[l] != 0) 
+	    if (a[i] != 0)
+	    	v[l] = a[i];
+		++l
+	    ++i;
+	else if (v[l] != 0)
+	    if (b[j] != 0)
+		v[l] = b[j];
+		++l
+	    ++j;
+	else 
+	    ++l;
+   }
+   while (i < a.size) {
+  	if (v[l] == 0) ++l;
+	else if (a[i] != 0)
+	    v[l] = a[i];
+	    ++l; ++i;
+   }
+}
