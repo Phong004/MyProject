@@ -10,6 +10,7 @@ int main() {
 
     queue<string> q;
     string s1, s2;
+    
     cin >> s1 >> s2;
 
     q.push(s1);
